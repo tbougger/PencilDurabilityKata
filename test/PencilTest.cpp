@@ -15,6 +15,7 @@ PencilTest::~PencilTest()
 void PencilTest::run()
 {
    pencilWritesOnPaper();
+   pencilAppendsToPaper();
    PRINT_RESULTS();
 }
 
@@ -27,4 +28,15 @@ void PencilTest::pencilWritesOnPaper()
 
    pencil.write( "Pencil writes on paper", paper );
    TEST_COMPARE( "Pencil writes on paper", paper.getText() );
+}
+
+void PencilTest::pencilAppendsToPaper()
+{
+   FUNCTION_NAME;
+
+   Paper paper( "Existing Text" );
+   Pencil pencil;
+   
+   pencil.write( " - Pencil appends to paper", paper );
+   TEST_COMPARE( "Existing Text - Pencil appends to paper", paper.getText() );
 }

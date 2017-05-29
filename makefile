@@ -9,7 +9,7 @@ TESTODIR=./test
 
 _OBJ = Main.o Paper.o Pencil.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-_TESTOBJ = Main.o UnitTest.o PencilTest.o
+_TESTOBJ = Main.o UnitTest.o PencilTest.o PaperTest.o
 TESTOBJ = $(patsubst %,$(TESTODIR)/%,$(_TESTOBJ))
 _TESTIMPORT = Paper.o Pencil.o
 TESTIMPORT = $(patsubst %,$(ODIR)/%,$(_TESTIMPORT))
