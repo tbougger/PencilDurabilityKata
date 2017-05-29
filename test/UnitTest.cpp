@@ -14,23 +14,21 @@ void UnitTest::TEST_COMPARE( std::string expected, std::string actual )
    m_testCount++;
    if (actual.compare(expected) == 0)
    {
-      std::cout << "Failed" << std::endl
-                << "Expected:  " << expected << std::endl
-                << "  Actual:  " << actual << std::endl;
+      std::cout << "Passed" << std::endl;
+      m_passed++;
    }
    else
    {
-      std::cout << "Passed" << std::endl;
-      m_passed++;
+      std::cout << "Failed" << std::endl
+                    << "Expected:  " << expected << std::endl
+                    << "    Actual:  " << actual << std::endl;
    }
 }
 
 void UnitTest::PRINT_RESULTS()
 {
-   std::cout << "-------------------------------------------------------------------" << std::endl
-             << "Total Number of Tests: " << m_testCount << std::endl
-             << "Tests Passed: " << m_passed << std::endl
-             << "Tests Failed: " << m_testCount - m_passed << std::endl
-             << "-------------------------------------------------------------------" << std::endl
-             << std::endl;
+   std::cout << "Tests Complete:" << std::endl
+                 << "Number of Tests: " << m_testCount << std::endl
+                 << "Passed: " << m_passed << std::endl
+                 << "Failed: " << m_testCount - m_passed << std::endl << std::endl;
 }
