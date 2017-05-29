@@ -9,10 +9,26 @@ UnitTest::~UnitTest()
 {
 }
 
-void UnitTest::TEST_COMPARE( std::string expected, std::string actual )
+void UnitTest::TEST_STRING_COMPARE( std::string expected, std::string actual )
 {
    m_testCount++;
    if (actual.compare(expected) == 0)
+   {
+      std::cout << "Passed" << std::endl;
+      m_passed++;
+   }
+   else
+   {
+      std::cout << "Failed" << std::endl
+                << "Expected:  " << expected << std::endl
+                << "  Actual:  " << actual << std::endl;
+   }
+}
+
+void UnitTest::TEST_INT_COMPARE( int expected, int actual )
+{
+   m_testCount++;
+   if ( actual == expected )
    {
       std::cout << "Passed" << std::endl;
       m_passed++;

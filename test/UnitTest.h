@@ -12,7 +12,8 @@ public:
    virtual void run() = 0;
 
 protected:
-   void TEST_COMPARE( std::string expected, std::string actual );
+   void TEST_STRING_COMPARE( std::string expected, std::string actual );
+   void TEST_INT_COMPARE( int expected, int actual );
    void PRINT_RESULTS();
 
    int m_testCount;

@@ -16,6 +16,8 @@ void PencilTest::run()
 {
    pencilWritesOnPaper();
    pencilAppendsToPaper();
+   pencilHasDefaultDurability();
+   constructorSetsDurability();
    PRINT_RESULTS();
 }
 
@@ -27,7 +29,7 @@ void PencilTest::pencilWritesOnPaper()
    Paper paper;
 
    pencil.write( "Pencil writes on paper", paper );
-   TEST_COMPARE( "Pencil writes on paper", paper.getText() );
+   TEST_STRING_COMPARE( "Pencil writes on paper", paper.getText() );
 }
 
 void PencilTest::pencilAppendsToPaper()
@@ -38,5 +40,22 @@ void PencilTest::pencilAppendsToPaper()
    Pencil pencil;
    
    pencil.write( " - Pencil appends to paper", paper );
-   TEST_COMPARE( "Existing Text - Pencil appends to paper", paper.getText() );
+   TEST_STRING_COMPARE( "Existing Text - Pencil appends to paper", paper.getText() );
 }
+
+void PencilTest::pencilHasDefaultDurability()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil;
+   TEST_INT_COMPARE( 40000, pencil.getDurability() );
+}
+
+void PencilTest::constructorSetsDurability()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100 );
+   TEST_INT_COMPARE( 100, pencil.getDurability() );
+}
+

@@ -13,4 +13,6 @@ public:
 private:
    void pencilWritesOnPaper();
    void pencilAppendsToPaper();
+   void pencilHasDefaultDurability();
+   void constructorSetsDurability();
 };

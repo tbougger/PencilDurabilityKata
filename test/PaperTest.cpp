@@ -23,7 +23,7 @@ void PaperTest::constructorSetsText()
    FUNCTION_NAME;
 
    Paper paper( "Setting initial text" );
-   TEST_COMPARE( "Setting initial text", paper.getText() );
+   TEST_STRING_COMPARE( "Setting initial text", paper.getText() );
 }
 
 void PaperTest::appendAddsTextAtTheEnd()
@@ -32,5 +32,5 @@ void PaperTest::appendAddsTextAtTheEnd()
 
    Paper paper( "Initial text" );
    paper.append( " + added more text" );
-   TEST_COMPARE( "Initial text + added more text", paper.getText() );
+   TEST_STRING_COMPARE( "Initial text + added more text", paper.getText() );
 }
