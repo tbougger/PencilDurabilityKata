@@ -18,4 +18,7 @@ protected:
 
    int m_testCount;
    int m_passed;
+
+private:
+   bool TEST_COMPARE( bool result );   
 };
