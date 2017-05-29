@@ -7,10 +7,12 @@ TESTCPPFLAGS=-fno-access-control -I$(TESTIDIR) -g
 ODIR=./src
 TESTODIR=./test
 
-_OBJ = Main.o
+_OBJ = Main.o Paper.o Pencil.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 _TESTOBJ = Main.o UnitTest.o PencilTest.o
 TESTOBJ = $(patsubst %,$(TESTODIR)/%,$(_TESTOBJ))
+_TESTIMPORT = Paper.o Pencil.o
+TESTIMPORT = $(patsubst %,$(ODIR)/%,$(_TESTIMPORT))
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CPPFLAGS) -c -o $@
@@ -23,7 +25,7 @@ all: PDK test
 PDK: $(OBJ)
 	$(CC) -o ./PDK $^ $(CPPFLAGS)
 
-test: $(TESTOBJ)
+test: $(TESTOBJ) $(TESTIMPORT)
 	$(CC) -o ./test $^ $(CPPFLAGS) $(TESTCPPFLAGS)
 
 .PHONY: clean

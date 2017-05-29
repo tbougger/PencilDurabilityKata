@@ -9,4 +9,7 @@ public:
    ~PencilTest();
 
    void run();
+
+private:
+   void pencilWritesOnPaper();
 };

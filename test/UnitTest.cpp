@@ -20,15 +20,15 @@ void UnitTest::TEST_COMPARE( std::string expected, std::string actual )
    else
    {
       std::cout << "Failed" << std::endl
-                    << "Expected:  " << expected << std::endl
-                    << "    Actual:  " << actual << std::endl;
+                << "Expected:  " << expected << std::endl
+                << "  Actual:  " << actual << std::endl;
    }
 }
 
 void UnitTest::PRINT_RESULTS()
 {
    std::cout << "Tests Complete:" << std::endl
-                 << "Number of Tests: " << m_testCount << std::endl
-                 << "Passed: " << m_passed << std::endl
-                 << "Failed: " << m_testCount - m_passed << std::endl << std::endl;
+             << "Number of Tests: " << m_testCount << std::endl
+             << "Passed: " << m_passed << std::endl
+             << "Failed: " << m_testCount - m_passed << std::endl << std::endl;
 }

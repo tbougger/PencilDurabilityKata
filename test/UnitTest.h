@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#define FUNCTION_NAME std::cout << typeid(*this).name() << "::" <<__func__ << " - " ;
+#define FUNCTION_NAME std::cout << __func__ << " - ";
 
 class UnitTest
 {
