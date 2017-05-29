@@ -19,5 +19,6 @@ int Pencil::getDurability()
 
 void Pencil::write( std::string text, Paper &paper )
 {
+   m_durability -= text.length();
    paper.append( text );
 }

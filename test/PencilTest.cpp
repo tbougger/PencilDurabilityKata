@@ -18,6 +18,7 @@ void PencilTest::run()
    pencilAppendsToPaper();
    pencilHasDefaultDurability();
    constructorSetsDurability();
+   durabililtyDecreasesWhenWriting();
    PRINT_RESULTS();
 }
 
@@ -57,5 +58,16 @@ void PencilTest::constructorSetsDurability()
 
    Pencil pencil( 100 );
    TEST_INT_COMPARE( 100, pencil.getDurability() );
+}
+
+void PencilTest::durabililtyDecreasesWhenWriting()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100 );
+   Paper paper;
+
+   pencil.write( "Durability decreases as you write", paper );
+   TEST_INT_COMPARE( 67, pencil.getDurability() );
 }
 

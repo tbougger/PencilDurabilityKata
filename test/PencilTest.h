@@ -15,4 +15,5 @@ private:
    void pencilAppendsToPaper();
    void pencilHasDefaultDurability();
    void constructorSetsDurability();
+   void durabililtyDecreasesWhenWriting();
 };
