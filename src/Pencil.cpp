@@ -34,6 +34,10 @@ char Pencil::write( char character )
    {
       return ' ';
    }
+   else if ( isCapitalLetter( character ) )
+   {
+      m_durability -= ( m_durability > 1 ) ? 2 : 1;
+   }
    else if ( !isWhitespace( character ) )
    {
       --m_durability;
@@ -52,3 +56,8 @@ bool Pencil::isWhitespace( char character )
    return ( character == ' ' || character == '\n' );
 }
 
+bool Pencil::isCapitalLetter( char character )
+{
+   const static std::string caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   return ( caps.find( character ) != std::string::npos );
+}

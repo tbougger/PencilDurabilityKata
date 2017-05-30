@@ -20,5 +20,6 @@ private:
 
    char write( char character );
    bool isWhitespace( char character );
+   bool isCapitalLetter( char character );
 
 };

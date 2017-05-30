@@ -22,6 +22,7 @@ void PencilTest::run()
    pencilWritesSpacesWhenDull();
    pencilWritesSpacesAfterBecomingDull();
    whitespaceDoesNotDecreaseDurability();
+   capitalLettersDecreaseDurabilityByTwo();
    PRINT_RESULTS();
 }
 
@@ -71,7 +72,7 @@ void PencilTest::durabililtyDecreasesWhenWriting()
    Paper paper;
 
    pencil.write( "Durability decreases as you write", paper );
-   TEST_INT_COMPARE( 71, pencil.getDurability() );
+   TEST_INT_COMPARE( 70, pencil.getDurability() );
 }
 
 void PencilTest::pencilWritesSpacesWhenDull()
@@ -93,17 +94,27 @@ void PencilTest::pencilWritesSpacesAfterBecomingDull()
    Paper paper;
 
    pencil.write( "Pencil writes spaces after becoming dull", paper );
-   TEST_STRING_COMPARE( "Pencil writ                             ", paper.getText() );
+   TEST_STRING_COMPARE( "Pencil wri                              ", paper.getText() );
 }
 
 void PencilTest::whitespaceDoesNotDecreaseDurability()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 36 );
+   Pencil pencil( 100 );
    Paper paper;
 
-   std::string expected = "\nWhitespace does not decrease\ndurability     .";
-   pencil.write( expected, paper );
-   TEST_STRING_COMPARE( expected, paper.getText() );
+   pencil.write( "\nWhitespace does not decrease\ndurability     .", paper );
+   TEST_INT_COMPARE( 63, pencil.getDurability() );
+}
+
+void PencilTest::capitalLettersDecreaseDurabilityByTwo()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100 );
+   Paper paper;
+
+   pencil.write( "CapitalLettersDecreaseDurabilityByTwo", paper );
+   TEST_INT_COMPARE( 57, pencil.getDurability() );
 }
