@@ -29,6 +29,7 @@ void PencilTest::run()
    eraserDurabilityDecreasesWithUse();
    eraserDurabilityDoesNotDecreaseWithWhitespace();
    eraserDoesNotEraseWhenDurabilityIsZero();
+   editOverwritesWhitespaceOnThePaper();
    PRINT_RESULTS();
 }
 
@@ -215,5 +216,16 @@ void PencilTest::eraserDoesNotEraseWhenDurabilityIsZero()
    FUNCTION_NAME;
    pencil.erase( "the", paper );
    TEST_STRING_COMPARE( "This is t   text on     paper", paper.getText() );
+}
+
+void PencilTest::editOverwritesWhitespaceOnThePaper()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil(100, 100, 20 );
+   Paper paper( "This is the      on the paper" );
+
+   pencil.edit( 12, "TEXT", paper );
+   TEST_STRING_COMPARE( "This is the TEXT on the paper", paper.getText() );
 }
 

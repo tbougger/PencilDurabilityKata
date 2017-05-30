@@ -116,3 +116,8 @@ char Pencil::erase( char character )
 
    return ' ';
 }
+
+void Pencil::edit( std::size_t position, const std::string& text, Paper& paper )
+{
+   paper.replace( position, text );
+}

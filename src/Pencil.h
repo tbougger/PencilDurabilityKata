@@ -18,6 +18,7 @@ public:
    bool isDull();
    void sharpen();
    void erase( const std::string& text, Paper& paper );
+   void edit( std::size_t position, const std::string& text, Paper& paper );
 
 private:
    int m_durability;
