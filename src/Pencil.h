@@ -11,9 +11,13 @@ public:
    Pencil( int durability );
    virtual ~Pencil();
 
-   void write( std::string text, Paper &paper );
+   void write( const std::string &text, Paper &paper );
    int getDurability();
+   bool isDull();
 
 private:
    int m_durability;
+
+   char write( char character );
+
 };

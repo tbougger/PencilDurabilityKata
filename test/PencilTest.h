@@ -16,4 +16,5 @@ private:
    void pencilHasDefaultDurability();
    void constructorSetsDurability();
    void durabililtyDecreasesWhenWriting();
+   void pencilWritesSpacesWhenDull();
 };
