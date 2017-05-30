@@ -34,7 +34,7 @@ char Pencil::write( char character )
    {
       return ' ';
    }
-   else
+   else if ( !isWhitespace( character ) )
    {
       --m_durability;
    }
@@ -45,5 +45,10 @@ char Pencil::write( char character )
 bool Pencil::isDull()
 {
    return ( 0 == m_durability );
+}
+
+bool Pencil::isWhitespace( char character )
+{
+   return ( character == ' ' || character == '\n' );
 }
 

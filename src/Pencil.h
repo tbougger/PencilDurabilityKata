@@ -19,5 +19,6 @@ private:
    int m_durability;
 
    char write( char character );
+   bool isWhitespace( char character );
 
 };

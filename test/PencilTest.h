@@ -18,4 +18,5 @@ private:
    void durabililtyDecreasesWhenWriting();
    void pencilWritesSpacesWhenDull();
    void pencilWritesSpacesAfterBecomingDull();
+   void whitespaceDoesNotDecreaseDurability();
 };
