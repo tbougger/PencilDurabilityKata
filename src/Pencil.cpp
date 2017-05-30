@@ -1,10 +1,10 @@
 #include "Pencil.h"
 
-Pencil::Pencil() : m_durability( 40000 )
+Pencil::Pencil() : m_durability( 40000 ), m_length( 100 )
 {
 }
 
-Pencil::Pencil( int durability ) : m_durability( durability )
+Pencil::Pencil( int durability, int length ) : m_durability( durability ), m_length( length )
 {
 }
 
@@ -15,6 +15,11 @@ Pencil::~Pencil()
 int Pencil::getDurability()
 {
    return m_durability;
+}
+
+int Pencil::getLength()
+{
+   return m_length;
 }
 
 void Pencil::write( const std::string &text, Paper &paper )

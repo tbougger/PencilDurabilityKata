@@ -8,15 +8,17 @@ class Pencil
 {
 public:
    Pencil();
-   Pencil( int durability );
+   Pencil( int durability, int length );
    virtual ~Pencil();
 
    void write( const std::string &text, Paper &paper );
    int getDurability();
+   int getLength();
    bool isDull();
 
 private:
    int m_durability;
+   int m_length;
 
    char write( char character );
    bool isWhitespace( char character );

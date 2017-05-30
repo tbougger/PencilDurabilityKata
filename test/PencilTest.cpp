@@ -16,8 +16,8 @@ void PencilTest::run()
 {
    pencilWritesOnPaper();
    pencilAppendsToPaper();
-   pencilHasDefaultDurability();
-   constructorSetsDurability();
+   pencilHasDefaultDurabilityAndDefaultLength();
+   constructorSetsDurabilityAndLength();
    durabililtyDecreasesWhenWriting();
    pencilWritesSpacesWhenDull();
    pencilWritesSpacesAfterBecomingDull();
@@ -48,27 +48,31 @@ void PencilTest::pencilAppendsToPaper()
    TEST_STRING_COMPARE( "Existing Text - Pencil appends to paper", paper.getText() );
 }
 
-void PencilTest::pencilHasDefaultDurability()
+void PencilTest::pencilHasDefaultDurabilityAndDefaultLength()
 {
    FUNCTION_NAME;
 
    Pencil pencil;
    TEST_INT_COMPARE( 40000, pencil.getDurability() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 100, pencil.getLength() );
 }
 
-void PencilTest::constructorSetsDurability()
+void PencilTest::constructorSetsDurabilityAndLength()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100 );
+   Pencil pencil( 100, 25 );
    TEST_INT_COMPARE( 100, pencil.getDurability() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 25, pencil.getLength() );
 }
 
 void PencilTest::durabililtyDecreasesWhenWriting()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100 );
+   Pencil pencil( 100, 100 );
    Paper paper;
 
    pencil.write( "Durability decreases as you write", paper );
@@ -79,7 +83,7 @@ void PencilTest::pencilWritesSpacesWhenDull()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 0 );
+   Pencil pencil( 0, 100 );
    Paper paper;
 
    pencil.write( "Pencil writes spaces when dull", paper );
@@ -90,7 +94,7 @@ void PencilTest::pencilWritesSpacesAfterBecomingDull()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 10 );
+   Pencil pencil( 10, 100 );
    Paper paper;
 
    pencil.write( "Pencil writes spaces after becoming dull", paper );
@@ -101,7 +105,7 @@ void PencilTest::whitespaceDoesNotDecreaseDurability()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100 );
+   Pencil pencil( 100, 100 );
    Paper paper;
 
    pencil.write( "\nWhitespace does not decrease\ndurability     .", paper );
@@ -112,7 +116,7 @@ void PencilTest::capitalLettersDecreaseDurabilityByTwo()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100 );
+   Pencil pencil( 100, 100 );
    Paper paper;
 
    pencil.write( "CapitalLettersDecreaseDurabilityByTwo", paper );

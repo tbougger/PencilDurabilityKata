@@ -13,8 +13,8 @@ public:
 private:
    void pencilWritesOnPaper();
    void pencilAppendsToPaper();
-   void pencilHasDefaultDurability();
-   void constructorSetsDurability();
+   void pencilHasDefaultDurabilityAndDefaultLength();
+   void constructorSetsDurabilityAndLength();
    void durabililtyDecreasesWhenWriting();
    void pencilWritesSpacesWhenDull();
    void pencilWritesSpacesAfterBecomingDull();
