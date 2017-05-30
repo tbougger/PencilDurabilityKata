@@ -11,7 +11,7 @@ public:
 
    const std::string& getText();
    void append( const std::string& text );
-   void set( const std::string& text );
+   void replace( std::size_t position, const std::string& text );
 
 private:
    std::string m_text;

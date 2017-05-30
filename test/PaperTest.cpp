@@ -15,7 +15,7 @@ void PaperTest::run()
 {
    constructorSetsText();
    appendAddsTextAtTheEnd();
-   setReplacesThePaperText();
+   replaceChangesThePaperText();
    PRINT_RESULTS();
 }
 
@@ -36,11 +36,14 @@ void PaperTest::appendAddsTextAtTheEnd()
    TEST_STRING_COMPARE( "Initial text + added more text", paper.getText() );
 }
 
-void PaperTest::setReplacesThePaperText()
+void PaperTest::replaceChangesThePaperText()
 {
    FUNCTION_NAME;
 
-   Paper paper( "Initial text" );
-   paper.set( "New Page" );
-   TEST_STRING_COMPARE( "New Page", paper.getText() );
+   Paper paper( "This is the text on the page" );
+   paper.replace( 12, "word" );
+   TEST_STRING_COMPARE( "This is the word on the page", paper.getText() );
+   paper.replace( 24, "book" );
+   FUNCTION_NAME;
+   TEST_STRING_COMPARE( "This is the word on the book", paper.getText() );
 }

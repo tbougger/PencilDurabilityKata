@@ -22,7 +22,10 @@ void Paper::append( const std::string& text )
     m_text += text;
 }
 
-void Paper::set( const std::string& text )
+void Paper::replace( std::size_t position, const std::string& text )
 {
-   m_text = text;
+   if( position + text.length() <= m_text.length() )
+   {
+      m_text.replace( position, text.length(), text );
+   }
 }

@@ -13,5 +13,5 @@ public:
 private:
    void constructorSetsText();
    void appendAddsTextAtTheEnd();
-   void setReplacesThePaperText();
+   void replaceChangesThePaperText();
 };

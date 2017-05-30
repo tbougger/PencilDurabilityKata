@@ -99,10 +99,7 @@ void Pencil::erase( const std::string& text, Paper& paper )
       {
          *rit = erase( *rit );
       }
-
-      std::string newText = paper.getText();
-      newText.replace( found, text.length(), eraseText );
-      paper.set( newText );
+      paper.replace( found, eraseText );
    }
 }
 
