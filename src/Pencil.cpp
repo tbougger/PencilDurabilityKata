@@ -2,10 +2,12 @@
 
 Pencil::Pencil() : m_durability( 40000 ), m_length( 100 )
 {
+   m_maxDurability = m_durability;
 }
 
 Pencil::Pencil( int durability, int length ) : m_durability( durability ), m_length( length )
 {
+   m_maxDurability = durability;
 }
 
 Pencil::~Pencil()
@@ -65,4 +67,13 @@ bool Pencil::isCapitalLetter( char character )
 {
    const static std::string caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
    return ( caps.find( character ) != std::string::npos );
+}
+
+void Pencil::sharpen()
+{
+   if( m_length > 0 )
+   {
+      m_durability = m_maxDurability;
+      --m_length;
+   }
 }

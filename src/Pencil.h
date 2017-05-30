@@ -15,9 +15,11 @@ public:
    int getDurability();
    int getLength();
    bool isDull();
+   void sharpen();
 
 private:
    int m_durability;
+   int m_maxDurability;
    int m_length;
 
    char write( char character );

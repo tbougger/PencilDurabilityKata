@@ -23,6 +23,8 @@ void PencilTest::run()
    pencilWritesSpacesAfterBecomingDull();
    whitespaceDoesNotDecreaseDurability();
    capitalLettersDecreaseDurabilityByTwo();
+   sharpeningPencilRestoresDurabilityAndDecreasesLength();
+   pencilsWithZeroLengthCannotBeSharpened();
    PRINT_RESULTS();
 }
 
@@ -122,3 +124,30 @@ void PencilTest::capitalLettersDecreaseDurabilityByTwo()
    pencil.write( "CapitalLettersDecreaseDurabilityByTwo", paper );
    TEST_INT_COMPARE( 57, pencil.getDurability() );
 }
+
+void PencilTest::sharpeningPencilRestoresDurabilityAndDecreasesLength()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100, 10 );
+   Paper paper;
+
+   pencil.write( "Writing Something", paper );
+   pencil.sharpen();
+   TEST_INT_COMPARE( 100, pencil.getDurability() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 9, pencil.getLength() );
+}
+
+void PencilTest::pencilsWithZeroLengthCannotBeSharpened()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100, 0 );
+   Paper paper;
+
+   pencil.write( "Writing Something", paper );
+   pencil.sharpen();
+   TEST_INT_COMPARE( 82, pencil.getDurability() );
+}
+

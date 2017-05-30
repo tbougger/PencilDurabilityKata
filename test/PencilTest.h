@@ -20,4 +20,6 @@ private:
    void pencilWritesSpacesAfterBecomingDull();
    void whitespaceDoesNotDecreaseDurability();
    void capitalLettersDecreaseDurabilityByTwo();
+   void sharpeningPencilRestoresDurabilityAndDecreasesLength();
+   void pencilsWithZeroLengthCannotBeSharpened();
 };
