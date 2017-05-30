@@ -22,4 +22,5 @@ private:
    void capitalLettersDecreaseDurabilityByTwo();
    void sharpeningPencilRestoresDurabilityAndDecreasesLength();
    void pencilsWithZeroLengthCannotBeSharpened();
+   void eraserRemovesTextIfFoundFromPaperStartingAtTheEnd();
 };

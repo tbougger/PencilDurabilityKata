@@ -25,6 +25,7 @@ void PencilTest::run()
    capitalLettersDecreaseDurabilityByTwo();
    sharpeningPencilRestoresDurabilityAndDecreasesLength();
    pencilsWithZeroLengthCannotBeSharpened();
+   eraserRemovesTextIfFoundFromPaperStartingAtTheEnd();
    PRINT_RESULTS();
 }
 
@@ -153,5 +154,22 @@ void PencilTest::pencilsWithZeroLengthCannotBeSharpened()
    pencil.write( "Writing Something", paper );
    pencil.sharpen();
    TEST_INT_COMPARE( 82, pencil.getDurability() );
+}
+
+void PencilTest::eraserRemovesTextIfFoundFromPaperStartingAtTheEnd()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil;
+   Paper paper( "This is the text on the paper" );
+
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is the text on     paper", paper.getText() );
+   FUNCTION_NAME;
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is     text on     paper", paper.getText() );
+   FUNCTION_NAME;
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is     text on     paper", paper.getText() );
 }
 

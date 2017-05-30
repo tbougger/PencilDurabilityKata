@@ -88,3 +88,14 @@ void Pencil::sharpen()
       --m_length;
    }
 }
+
+void Pencil::erase( const std::string& text, Paper& paper )
+{
+   std::size_t found = paper.getText().rfind(text);
+   if( found != std::string::npos )
+   {
+      std::string newText = paper.getText();
+      newText.replace( found, text.length(), std::string( text.length(), ' ' ) );
+      paper.set( newText );
+   }
+}

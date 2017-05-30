@@ -6,11 +6,12 @@ class Paper
 {
 public:
    Paper();
-   Paper( std::string text );
+   Paper( const std::string& text );
    virtual ~Paper();
 
-   std::string getText();
-   void append( std::string text );
+   const std::string& getText();
+   void append( const std::string& text );
+   void set( const std::string& text );
 
 private:
    std::string m_text;

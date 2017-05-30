@@ -4,7 +4,7 @@ Paper::Paper()
 {
 }
 
-Paper::Paper( std::string text ) : m_text( text )
+Paper::Paper( const std::string& text ) : m_text( text )
 {
 }
 
@@ -12,12 +12,17 @@ Paper::~Paper()
 {
 }
 
-std::string Paper::getText()
+const std::string& Paper::getText()
 {
     return m_text;
 }
 
-void Paper::append( std::string text )
+void Paper::append( const std::string& text )
 {
     m_text += text;
+}
+
+void Paper::set( const std::string& text )
+{
+   m_text = text;
 }
