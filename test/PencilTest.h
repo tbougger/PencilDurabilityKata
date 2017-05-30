@@ -27,4 +27,5 @@ private:
    void eraserDurabilityDoesNotDecreaseWithWhitespace();
    void eraserDoesNotEraseWhenDurabilityIsZero();
    void editOverwritesWhitespaceOnThePaper();
+   void editWritesOnTopOfExistingText();
 };

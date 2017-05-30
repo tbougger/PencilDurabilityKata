@@ -28,6 +28,7 @@ private:
 
    char write( char character );
    char erase( char character );
+   char overWrite( char character, char existing );
    bool isWhitespace( char character );
    bool isCapitalLetter( char character );
 

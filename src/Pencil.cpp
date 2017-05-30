@@ -119,5 +119,29 @@ char Pencil::erase( char character )
 
 void Pencil::edit( std::size_t position, const std::string& text, Paper& paper )
 {
-   paper.replace( position, text );
+   if( position + text.length() <= paper.getText().length() )
+   {
+      std::string editText = text;
+      for( std::size_t i = 0; i < editText.length(); ++i )
+      {
+         editText.at( i ) = overWrite( editText.at( i ), paper.getText().at( position + i ) );
+      }
+
+      paper.replace( position, editText );
+   }
+}
+
+char Pencil::overWrite( char character, char existing)
+{
+   if ( isDull() )
+   {
+      return existing;
+   }
+   else if( !isWhitespace( existing ) )
+   {
+      --m_durability;
+      return '@';
+   }
+
+   return write( character );
 }
