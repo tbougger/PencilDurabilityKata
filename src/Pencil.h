@@ -26,6 +26,7 @@ private:
    int m_eraser;
 
    char write( char character );
+   char erase( char character );
    bool isWhitespace( char character );
    bool isCapitalLetter( char character );
 

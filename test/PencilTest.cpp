@@ -26,6 +26,9 @@ void PencilTest::run()
    sharpeningPencilRestoresDurabilityAndDecreasesLength();
    pencilsWithZeroLengthCannotBeSharpened();
    eraserRemovesTextIfFoundFromPaperStartingAtTheEnd();
+   eraserDurabilityDecreasesWithUse();
+   eraserDurabilityDoesNotDecreaseWithWhitespace();
+   eraserDoesNotEraseWhenDurabilityIsZero();
    PRINT_RESULTS();
 }
 
@@ -171,5 +174,46 @@ void PencilTest::eraserRemovesTextIfFoundFromPaperStartingAtTheEnd()
    FUNCTION_NAME;
    pencil.erase( "the", paper );
    TEST_STRING_COMPARE( "This is     text on     paper", paper.getText() );
+}
+
+void PencilTest::eraserDurabilityDecreasesWithUse()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil(100, 100, 5 );
+   Paper paper( "This is the text on the paper" );
+
+   pencil.erase( "the", paper );
+   TEST_INT_COMPARE( 2, pencil.getEraser() );
+}
+
+void PencilTest::eraserDurabilityDoesNotDecreaseWithWhitespace()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil(100, 100, 20 );
+   Paper paper( "This is the text on the paper" );
+
+   pencil.erase( "This is the text", paper );
+   TEST_INT_COMPARE( 7, pencil.getEraser() );
+}
+
+void PencilTest::eraserDoesNotEraseWhenDurabilityIsZero()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 100, 100, 5 );
+   Paper paper( "This is the text on the paper" );
+
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is the text on     paper", paper.getText() );
+   FUNCTION_NAME;
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is t   text on     paper", paper.getText() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 0, pencil.getEraser() );
+   FUNCTION_NAME;
+   pencil.erase( "the", paper );
+   TEST_STRING_COMPARE( "This is t   text on     paper", paper.getText() );
 }
 

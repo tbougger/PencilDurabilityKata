@@ -94,8 +94,28 @@ void Pencil::erase( const std::string& text, Paper& paper )
    std::size_t found = paper.getText().rfind(text);
    if( found != std::string::npos )
    {
+      std::string eraseText = text;
+      for( std::string::reverse_iterator rit = eraseText.rbegin(); rit != eraseText.rend(); ++rit )
+      {
+         *rit = erase( *rit );
+      }
+
       std::string newText = paper.getText();
-      newText.replace( found, text.length(), std::string( text.length(), ' ' ) );
+      newText.replace( found, text.length(), eraseText );
       paper.set( newText );
    }
+}
+
+char Pencil::erase( char character )
+{
+   if( 0 == m_eraser )
+   {
+      return character;
+   }
+   else if ( !isWhitespace( character ) )
+   {
+      --m_eraser;
+   }
+
+   return ' ';
 }

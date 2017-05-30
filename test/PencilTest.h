@@ -23,4 +23,7 @@ private:
    void sharpeningPencilRestoresDurabilityAndDecreasesLength();
    void pencilsWithZeroLengthCannotBeSharpened();
    void eraserRemovesTextIfFoundFromPaperStartingAtTheEnd();
+   void eraserDurabilityDecreasesWithUse();
+   void eraserDurabilityDoesNotDecreaseWithWhitespace();
+   void eraserDoesNotEraseWhenDurabilityIsZero();
 };
