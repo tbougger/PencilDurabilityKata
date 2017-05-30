@@ -17,4 +17,5 @@ private:
    void constructorSetsDurability();
    void durabililtyDecreasesWhenWriting();
    void pencilWritesSpacesWhenDull();
+   void pencilWritesSpacesAfterBecomingDull();
 };

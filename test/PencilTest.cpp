@@ -20,6 +20,7 @@ void PencilTest::run()
    constructorSetsDurability();
    durabililtyDecreasesWhenWriting();
    pencilWritesSpacesWhenDull();
+   pencilWritesSpacesAfterBecomingDull();
    PRINT_RESULTS();
 }
 
@@ -81,4 +82,15 @@ void PencilTest::pencilWritesSpacesWhenDull()
 
    pencil.write( "Pencil writes spaces when dull", paper );
    TEST_STRING_COMPARE( "                              ", paper.getText() );
+}
+
+void PencilTest::pencilWritesSpacesAfterBecomingDull()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil( 10 );
+   Paper paper;
+
+   pencil.write( "Pencil writes spaces after becoming dull", paper );
+   TEST_STRING_COMPARE( "Pencil wri                              ", paper.getText() );
 }

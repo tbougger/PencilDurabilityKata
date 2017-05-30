@@ -25,7 +25,6 @@ void Pencil::write( const std::string &text, Paper &paper )
       *it = write( *it );
    }
 
-   m_durability -= text.length();
    paper.append( pencilText );
 }
 
@@ -34,6 +33,10 @@ char Pencil::write( char character )
    if( isDull() )
    {
       return ' ';
+   }
+   else
+   {
+      --m_durability;
    }
 
    return character;
