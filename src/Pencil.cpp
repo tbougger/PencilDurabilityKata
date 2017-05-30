@@ -1,11 +1,17 @@
 #include "Pencil.h"
 
-Pencil::Pencil() : m_durability( 40000 ), m_length( 100 )
+Pencil::Pencil() : m_durability( 40000 ),
+                   m_length( 100 ),
+                   m_eraser( 20000 )
 {
    m_maxDurability = m_durability;
 }
 
-Pencil::Pencil( int durability, int length ) : m_durability( durability ), m_length( length )
+Pencil::Pencil( int durability,
+                int length,
+                int eraser ) : m_durability( durability ),
+                               m_length( length ),
+                               m_eraser( eraser )
 {
    m_maxDurability = durability;
 }
@@ -22,6 +28,11 @@ int Pencil::getDurability()
 int Pencil::getLength()
 {
    return m_length;
+}
+
+int Pencil::getEraser()
+{
+   return m_eraser;
 }
 
 void Pencil::write( const std::string &text, Paper &paper )

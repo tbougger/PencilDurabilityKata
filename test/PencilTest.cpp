@@ -16,8 +16,8 @@ void PencilTest::run()
 {
    pencilWritesOnPaper();
    pencilAppendsToPaper();
-   pencilHasDefaultDurabilityAndDefaultLength();
-   constructorSetsDurabilityAndLength();
+   pencilHasDefaultDurabilityDefaultLengthDefualtEraser();
+   constructorSetsDurabilityLengthAndEraser();
    durabililtyDecreasesWhenWriting();
    pencilWritesSpacesWhenDull();
    pencilWritesSpacesAfterBecomingDull();
@@ -50,7 +50,7 @@ void PencilTest::pencilAppendsToPaper()
    TEST_STRING_COMPARE( "Existing Text - Pencil appends to paper", paper.getText() );
 }
 
-void PencilTest::pencilHasDefaultDurabilityAndDefaultLength()
+void PencilTest::pencilHasDefaultDurabilityDefaultLengthDefualtEraser()
 {
    FUNCTION_NAME;
 
@@ -58,23 +58,27 @@ void PencilTest::pencilHasDefaultDurabilityAndDefaultLength()
    TEST_INT_COMPARE( 40000, pencil.getDurability() );
    FUNCTION_NAME;
    TEST_INT_COMPARE( 100, pencil.getLength() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 20000, pencil.getEraser() );
 }
 
-void PencilTest::constructorSetsDurabilityAndLength()
+void PencilTest::constructorSetsDurabilityLengthAndEraser()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 25 );
+   Pencil pencil( 100, 25, 50 );
    TEST_INT_COMPARE( 100, pencil.getDurability() );
    FUNCTION_NAME;
    TEST_INT_COMPARE( 25, pencil.getLength() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 50, pencil.getEraser() );
 }
 
 void PencilTest::durabililtyDecreasesWhenWriting()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 100 );
+   Pencil pencil( 100, 10, 50 );
    Paper paper;
 
    pencil.write( "Durability decreases as you write", paper );
@@ -85,7 +89,7 @@ void PencilTest::pencilWritesSpacesWhenDull()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 0, 100 );
+   Pencil pencil( 0, 10, 50 );
    Paper paper;
 
    pencil.write( "Pencil writes spaces when dull", paper );
@@ -96,7 +100,7 @@ void PencilTest::pencilWritesSpacesAfterBecomingDull()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 10, 100 );
+   Pencil pencil( 10, 100, 50 );
    Paper paper;
 
    pencil.write( "Pencil writes spaces after becoming dull", paper );
@@ -107,7 +111,7 @@ void PencilTest::whitespaceDoesNotDecreaseDurability()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 100 );
+   Pencil pencil( 100, 10, 50 );
    Paper paper;
 
    pencil.write( "\nWhitespace does not decrease\ndurability     .", paper );
@@ -118,7 +122,7 @@ void PencilTest::capitalLettersDecreaseDurabilityByTwo()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 100 );
+   Pencil pencil( 100, 10, 50);
    Paper paper;
 
    pencil.write( "CapitalLettersDecreaseDurabilityByTwo", paper );
@@ -129,7 +133,7 @@ void PencilTest::sharpeningPencilRestoresDurabilityAndDecreasesLength()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 10 );
+   Pencil pencil( 100, 10, 50 );
    Paper paper;
 
    pencil.write( "Writing Something", paper );
@@ -143,7 +147,7 @@ void PencilTest::pencilsWithZeroLengthCannotBeSharpened()
 {
    FUNCTION_NAME;
 
-   Pencil pencil( 100, 0 );
+   Pencil pencil( 100, 0, 50 );
    Paper paper;
 
    pencil.write( "Writing Something", paper );
