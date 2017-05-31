@@ -28,4 +28,5 @@ private:
    void eraserDoesNotEraseWhenDurabilityIsZero();
    void editOverwritesWhitespaceOnThePaper();
    void editWritesOnTopOfExistingText();
+   void cannotWriteCapitalLettersWhenDurabilityIsOne();
 };

@@ -31,6 +31,7 @@ void PencilTest::run()
    eraserDoesNotEraseWhenDurabilityIsZero();
    editOverwritesWhitespaceOnThePaper();
    editWritesOnTopOfExistingText();
+   cannotWriteCapitalLettersWhenDurabilityIsOne();
    PRINT_RESULTS();
 }
 
@@ -239,5 +240,19 @@ void PencilTest::editWritesOnTopOfExistingText()
 
    pencil.edit( 8, "aaa TEXT bb", paper );
    TEST_STRING_COMPARE( "This is @@@ TEXT @@ the paper", paper.getText() );
+   FUNCTION_NAME;
+   TEST_INT_COMPARE( 87, pencil.getDurability() );
+}
+
+
+void PencilTest::cannotWriteCapitalLettersWhenDurabilityIsOne()
+{
+   FUNCTION_NAME;
+
+   Pencil pencil(1, 100, 20 );
+   Paper paper;
+
+   pencil.write(        "Durability", paper );
+   TEST_STRING_COMPARE( " u        ", paper.getText() );
 }
 

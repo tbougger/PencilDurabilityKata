@@ -46,7 +46,14 @@ void Pencil::write( char& character )
    }
    else if ( isCapitalLetter( character ) )
    {
-      m_durability -= ( m_durability > 1 ) ? 2 : 1;
+      if( m_durability == 1 )
+      {
+         character = ' ';
+      }
+      else
+      {
+         m_durability -= 2;
+      }
    }
    else if ( !isWhitespace( character ) )
    {
