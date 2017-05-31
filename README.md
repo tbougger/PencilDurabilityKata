@@ -2,7 +2,7 @@
 
 This is the implementation for Pencil Durability Kata.  The implementation and tests are focused on the Pencil and Paper classes.  There is also a simple UI for exercising the functions in the Pencil class.
 
-This is a C++ project which can be compiled with g++
+This is a C++ project which can be compiled with g++.  I used GCC version 5.4.0 in cygwin.
 
 Use the following commands to compile and run the unit tests:
 
