@@ -1,17 +1,11 @@
 #include "Pencil.h"
 
-Pencil::Pencil() : m_durability( 40000 ),
-                   m_length( 100 ),
-                   m_eraser( 20000 )
+Pencil::Pencil() : m_durability( 40000 ), m_length( 100 ), m_eraser( 20000 )
 {
    m_maxDurability = m_durability;
 }
 
-Pencil::Pencil( int durability,
-                int length,
-                int eraser ) : m_durability( durability ),
-                               m_length( length ),
-                               m_eraser( eraser )
+Pencil::Pencil( int durability, int length, int eraser ) : m_durability( durability ), m_length( length ), m_eraser( eraser )
 {
    m_maxDurability = durability;
 }
@@ -35,22 +29,20 @@ int Pencil::getEraser()
    return m_eraser;
 }
 
-void Pencil::write( const std::string &text, Paper &paper )
+void Pencil::write( std::string pencilText, Paper &paper )
 {
-   std::string pencilText = text;
    for( std::string::iterator it = pencilText.begin(); it != pencilText.end(); ++it )
    {
-      *it = write( *it );
+      write( *it );
    }
-
    paper.append( pencilText );
 }
 
-char Pencil::write( char character )
+void Pencil::write( char& character )
 {
    if( isDull() )
    {
-      return ' ';
+      character = ' ';
    }
    else if ( isCapitalLetter( character ) )
    {
@@ -60,24 +52,21 @@ char Pencil::write( char character )
    {
       --m_durability;
    }
-
-   return character;
 }
 
 bool Pencil::isDull()
 {
-   return ( 0 == m_durability );
+   return !m_durability;
 }
 
 bool Pencil::isWhitespace( char character )
 {
-   return ( character == ' ' || character == '\n' );
+   return ( character == ' ' || character == '\n' || character == '\r' );
 }
 
 bool Pencil::isCapitalLetter( char character )
 {
-   const static std::string caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-   return ( caps.find( character ) != std::string::npos );
+   return ( character >= 'A' && character <= 'Z' );
 }
 
 void Pencil::sharpen()
@@ -89,59 +78,53 @@ void Pencil::sharpen()
    }
 }
 
-void Pencil::erase( const std::string& text, Paper& paper )
+void Pencil::erase( std::string eraseText, Paper& paper )
 {
-   std::size_t found = paper.getText().rfind(text);
+   std::size_t found = paper.getText().rfind( eraseText );
    if( found != std::string::npos )
    {
-      std::string eraseText = text;
       for( std::string::reverse_iterator rit = eraseText.rbegin(); rit != eraseText.rend(); ++rit )
       {
-         *rit = erase( *rit );
+         erase( *rit );
       }
       paper.replace( found, eraseText );
    }
 }
 
-char Pencil::erase( char character )
+void Pencil::erase( char& character )
 {
-   if( 0 == m_eraser )
-   {
-      return character;
-   }
-   else if ( !isWhitespace( character ) )
+   if( m_eraser > 0 && !isWhitespace( character ) )
    {
       --m_eraser;
+      character = ' ';
    }
-
-   return ' ';
 }
 
-void Pencil::edit( std::size_t position, const std::string& text, Paper& paper )
+void Pencil::edit( std::size_t position, std::string editText, Paper& paper )
 {
-   if( position + text.length() <= paper.getText().length() )
+   if( position + editText.length() <= paper.getText().length() )
    {
-      std::string editText = text;
       for( std::size_t i = 0; i < editText.length(); ++i )
       {
-         editText.at( i ) = overWrite( editText.at( i ), paper.getText().at( position + i ) );
+         overWrite( editText.at( i ), paper.getText().at( position + i ) );
       }
-
       paper.replace( position, editText );
    }
 }
 
-char Pencil::overWrite( char character, char existing)
+void Pencil::overWrite( char& character, char existing)
 {
    if ( isDull() )
    {
-      return existing;
+      character = existing;
    }
    else if( !isWhitespace( existing ) )
    {
       --m_durability;
-      return '@';
+      character = '@';
    }
-
-   return write( character );
+   else
+   {
+      write( character );
+   }
 }
