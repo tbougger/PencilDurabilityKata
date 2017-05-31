@@ -7,7 +7,7 @@ TESTCPPFLAGS=-fno-access-control -I$(TESTIDIR) -g
 ODIR=./src
 TESTODIR=./test
 
-_OBJ = Main.o Paper.o Pencil.o
+_OBJ = Main.o Paper.o Pencil.o PencilUi.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 _TESTOBJ = Main.o UnitTest.o PencilTest.o PaperTest.o
 TESTOBJ = $(patsubst %,$(TESTODIR)/%,$(_TESTOBJ))

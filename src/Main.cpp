@@ -1,7 +1,9 @@
 #include <iostream>
 
+#include "PencilUi.h"
+
 int main( int argc, const char * argv[] ) 
 {
-   return 0;
+   PencilUi ui;
+   return ui.run();
 }
-
